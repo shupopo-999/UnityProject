@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InkBall : MonoBehaviour {
     public MeshRenderer mr;
+
     public Rigidbody rb;
 	void Start () {
 		
@@ -23,12 +24,5 @@ public class InkBall : MonoBehaviour {
     {
         Destroy(gameObject);
 
-        if (rb.gameObject.name == "NeedleSphere_TypeA")
-        {
-            mr.material.color = new Color(
-                Random.Range(0.0f, 1.0f), 
-                Random.Range(0.0f, 1.0f),
-                Random.Range(0.0f, 1.0f));
-        }
     }
 }
