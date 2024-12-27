@@ -1,41 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Player_57 : MonoBehaviour
+public class Player_58 : MonoBehaviour
 {
+    public bool isGoal;
+    public Text timeText;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        isGoal = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"),0.0f);
+        transform.Rotate(0.0f, Input.GetAxis("Mouse X"), 0.0f);
+        
         if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(0.0f, 0.0f, 0.03f);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(-0.03f, 0.0f, 0.0f);
         }
         if (Input.GetKey(KeyCode.S))
         {
             transform.Translate(0.0f, 0.0f, -0.03f);
         }
-        if (Input.GetKey(KeyCode.D))
+
+        if(transform.position.y <= -5.0f)
         {
-            transform.Translate(0.03f, 0.0f, 0.0f);
+            transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         }
     }
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "beam")
+        if (col.gameObject.name == "Goal")
         {
-            transform.position = new Vector3(0, 0, 0);
+            if (!isGoal)
+            {
+                timeText.text = Time.fixedTime.ToString() + "•b‚ÅGoalI";
+            }
+            isGoal = true;
         }
     }
 }

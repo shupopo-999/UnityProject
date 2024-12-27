@@ -13,7 +13,6 @@ public class Taihou : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-    transform.Rotate(0f, speed, 0f);
-
+        transform.Rotate(0f, speed, 0f);
     }
 }
